@@ -1,2 +1,2 @@
 Name: Charlie Roslansky
-I plan on using Kali mostly on my own computer (Windows laptop), but occasionally on the CS Lab computers as well. I just got my software license key for VMWare, and am about to install it.
+I plan on using Kali mostly on my own computer (Windows laptop), but occasionally on the CS Lab computers as well. I have gotten it succesfully installed and running.
