@@ -1,0 +1,21 @@
+Author: Charlie Roslansky
+
+1. ifconfig; The IP address is listed after inet, under eth0
+2. nslookup [HOSTNAME]
+3. host [IP ADDRESS]
+4. scp -r [LOCAL FILEPATH] [USER@REMOTE SERVER:REMOTE FILEPATH]
+5. netstat -ln | grep:[PORT]
+6. netstat -ln
+7. wget -r [WEBSITE URL]
+8. curl -I [WEBSITE URL]
+9. curl -Iv [WEBSITE URL]
+
+
+
+
+CITATIONS
+https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/
+https://linuxize.com/post/check-listening-ports-linux/
+https://www.lifewire.com/uses-of-command-wget-2201085
+https://serverfault.com/questions/249483/shell-command-to-see-the-http-headers
+https://stackoverflow.com/questions/866946/how-can-i-see-the-request-headers-made-by-curl-when-sending-a-request-to-the-ser
