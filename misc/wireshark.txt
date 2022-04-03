@@ -1,3 +1,30 @@
 Author: Charlie Roslansky
 
-test
+===== DAYTIME =====
+1. 
+1	0.000000000	192.168.60.128	129.6.15.28	TCP	74	42762 → 13 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM=1 TSval=3677677808 TSecr=0 WS=128
+2	0.059919417	129.6.15.28	192.168.60.128	TCP	60	13 → 42762 [SYN, ACK] Seq=0 Ack=1 Win=64240 Len=0 MSS=1460
+3	0.060057487	192.168.60.128	129.6.15.28	TCP	54	42762 → 13 [ACK] Seq=1 Ack=1 Win=64240 Len=0
+
+2. Port 42762. The client needs a port for this interaction because it is expecting return traffic, and may be running other applications as well.
+
+3. 
+4	0.120885133	129.6.15.28	192.168.60.128	DAYTIME	105	DAYTIME Response
+
+4. 
+59672 22-04-03 17:57:57 50 0 0 789.5 UTC(NIST) * 
+59672 is the Modified Julian Date, or the number of days since November 17, 1858.
+The next two segments are the date and time.
+50 indicates that Daylight Savings Time is in effect
+The first 0 indicates no leap second will occur this month.
+The second 0 indicates the server is healthy and accurate.
+789.5 is the number of milliseconds that the server advances the time to compensate for network delays.
+UTC(NIST) indicates the time we received is UTC, from the NIST server.
+
+5. SYN is used to establish a connection. It is one computer telling the other that it wants to talk.
+
+6. ACK is an acknowledgement message. A computer sends an ACK to another to say that their message has been received.
+
+7. FIN is used to end a connection.
+
+8. The nc client, because it is the source of the FIN, ACK frame immediately following the daytime content frame.
