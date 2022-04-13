@@ -24,6 +24,7 @@ print("K = " + str(K))
 ```
 
 By using this brute force algorithm, we guarantee finding the smallest possible value that satisfies our inputs. Upon calculating Alice and Bob's secret keys, we can then computer their shared key.
+This code gave Alice's secret number as 36, Bob's as 15, and the shared key of 36.
 
 In practice, Diffie-Hellman key exchange uses numbers hundreds to thousands of bits long. Our brute-force attempt would take around a year of computation to solve on these larger numbers.
 
