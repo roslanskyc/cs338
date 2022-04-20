@@ -84,7 +84,7 @@ RSAPrivateKey:
     1. 
         Name: Version - the version that this document conforms to
         Value: 0x0
-        Range: INTEGER, 4-6. The digit in this header describes the type (in this case, integer, same as every single other line), and the other value is the length of the value in bytes (this will vary from one header to the next).
+        Range: INTEGER, 4-6 (inclusive). The digit in this header describes the type (in this case, integer, same as every single other line), and the other value is the length of the value in bytes (this will vary from one header to the next).
         
     2. 
         Name/Significance: Modulus - the RSA modulus n
