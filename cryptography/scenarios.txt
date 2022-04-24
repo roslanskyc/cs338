@@ -1,0 +1,5 @@
+Author: Charlie Roslansky
+
+1. Alice and Bob use Diffie-Hellman to agree on a shared secret key k. Then, Alice uses AES to send Bob C = AES(K,M). Bob then decrypts to get M = AES_D(K,C) to get the original message.
+
+2. 
