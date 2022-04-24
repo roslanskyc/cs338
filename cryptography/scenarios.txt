@@ -2,4 +2,13 @@ Author: Charlie Roslansky
 
 1. Alice and Bob use Diffie-Hellman to agree on a shared secret key k. Then, Alice uses AES to send Bob C = AES(K,M). Bob then decrypts to get M = AES_D(K,C) to get the original message.
 
-2. 
+2. Alice computes D = H(M) using SHA-256, and then encrypts it with her secret key to get a signature Sig = E(S_A, D). Alices then sends Bob the message M along with Sig. Bob then hashes M again to get D' = H(M), and decrypts Sig. Bob verifies if D' == E(P_A, Sig). If so, then M has not been modified by Mal.
+
+3.
+
+4. Alice could claim any of the following:
+    - There was a person in the middle that modified the contract Alice sent to Bob. 
+    - C is a contract Alice sent to someone else, and that Bob got a hold of.
+    - Bob got Alice's secret key and manufactured a digitally signed contract.
+
+5. In order to compute Sig_CA, CA would first use SHA-256 to compute H("bob.com" || P_B), and then encrypt it with its secret key. So, Sig_CA = E(S_CA, H("bob.com" || P_B)).
