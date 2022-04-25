@@ -4,7 +4,7 @@ Author: Charlie Roslansky
 
 2. Alice computes D = H(M) using SHA-256, and then encrypts it with her secret key to get a signature Sig = E(S_A, D). Alices then sends Bob the message M along with Sig. Bob then hashes M again to get D' = H(M), and decrypts Sig. Bob verifies if D' == E(P_A, Sig). If so, then M has not been modified by Mal.
 
-3.
+3. Alice generates a random key K, and sends Bob M = E(P_B, E(S_A, K)). Bob then decrypts to get K = E(S_B, E(P_A, M)), and verifies it came from Alice. They can then communicate with AES, using K.
 
 4. Alice could claim any of the following:
     - There was a person in the middle that modified the contract Alice sent to Bob. 
@@ -12,3 +12,8 @@ Author: Charlie Roslansky
     - Bob got Alice's secret key and manufactured a digitally signed contract.
 
 5. In order to compute Sig_CA, CA would first use SHA-256 to compute H("bob.com" || P_B), and then encrypt it with its secret key. So, Sig_CA = E(S_CA, H("bob.com" || P_B)).
+
+6. First, Alice and Bob can use Diffie-Hellman to come up with a shared key K. Alice can then issue Bob a challenge by sending him a random number R. Bob hashes it along with their key, and encrypts with his secret key, sending Alice E(S_B, H(K || R)). Alice could then verify by computing E(P_B, E(S_B, H(K || R))) and checking it agains H(K || R).
+
+7. Mal could convince the certificate authority they are Bob, and then the certificate that connects bob.com to P_B actually has Mal's public key. 
+They could also install malware on Alice's computer, so that when Alice makes a request to bob.com, instead of requesting a certificate from a trusted CA, Alice's browser just gives a fake certificate. 
