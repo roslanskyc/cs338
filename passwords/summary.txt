@@ -1,0 +1,44 @@
+Silas Rhyneer, Charlie Roslansky
+Note: The machine running the password cracker was handling a lot of other tasks, so timing was inconsistent on smaller scales.
+
+Part 1
+Total time: .68s
+Number of hashes computed: 267751
+Passwords cracked: 2805
+Time per hash computed: 4.781e-06
+Time per password cracked: 0.000435
+Passwords cracked per number of hashes computed: 0.01047615134
+
+Part 2
+Total time: 403.903
+Number of hashes computed: 265401997
+Passwords cracked: 5
+Time per hash computed: 1.522e-06
+Time per password cracked: 80.781
+Passwords cracked per number of hashes computed: 1.884e-08
+
+Part 3
+Total time: 61.33
+Number of hashes computed: 49715967
+Passwords cracked: 186
+Time per hash computed: 1.2335e-06
+Time per password cracked: 0.33
+Passwords cracked per number of hashes computed: 3.74e-06
+
+Analysis:
+- Did your time per hash computed change between phases? By what factor? Why?
+    - Time per hash did not change significantly. This is because we are hashing inputs of relatively equal length every time. 
+- Did your time per password crack change between phases? By what factor? Why?
+    - Yes, roughly by a factor of 200,000 between the first and second. This is because we had to hash combinations of words instead of single words and check those against the hashed passwords.
+- Suppose you wanted to precompute all the possible password hashes for each
+so you could just look up the password in a table indexed by the hash. How much
+memory would be required for each phase?
+    - Assuming each character in a string only requires 1 byte, and our hashes are 64 characters long
+        - Passwords1: num_words * mem(hash_string + username) = ~20 megabytes
+        - Passwords2: num_users * num_words^2 * mem(hash_string + username) = ~4 terabytes
+        - Passwords3: num_users * num_words * mem(hash_string + username) = ~50 gigabytes
+- Give 3-4 reasons we should store password hashes and not the passwords themselves.
+Think in terms of threats, who the attackers might be, etc.
+    - Someone that breaks into the server wouldn't immediately have access to all the passwords.
+    - If plaintext passwords are easily visible, these may be the same passwords used on other sites.
+    - An employee with access to the servers don't also have access to all of the plaintext passwords—they first have to un-hash them. With longer hashes, this becomes significantly more difficult. 
